@@ -9,15 +9,18 @@ import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
+import org.testng.annotations.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public class AndroidWebViewTest {
     private AppiumDriver<WebElement> driver;
 
-    @Before
+    @BeforeMethod
     public void setUp() throws Exception {
         // set up appium
         File classpathRoot = new File(System.getProperty("user.dir"));
@@ -30,7 +33,7 @@ public class AndroidWebViewTest {
         capabilities.setCapability("appActivity", ".HomeScreenActivity");
         driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
-    @After
+   @AfterMethod 
     public void tearDown() throws Exception {
         driver.quit();
     }
